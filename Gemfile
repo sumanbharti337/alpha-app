@@ -52,8 +52,8 @@ group :test do
 end
 
 group :production do
-  # gem 'pg'
-  gem 'mysql2', '>= 0.4.4'
+  gem 'pg'
+  # gem 'mysql2', '>= 0.4.4'
   gem 'rails_12factor'
 end
 
