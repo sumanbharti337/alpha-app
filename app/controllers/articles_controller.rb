@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     if @article.update(article_params)
       flash[:notice] = "Article was successfully updated"
-      # redirect_to_article_path(@article)
+      # redirect_to article_path(@article)
       redirect_to @article
     else
       render :edit
@@ -36,6 +36,14 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    flash[:notice] = "Article has been deleted successfully !"
+
+    redirect_to @article
   end
 
   private
