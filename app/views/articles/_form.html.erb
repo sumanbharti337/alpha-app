@@ -1,22 +1,22 @@
-<ul>
-  <% if @article.errors.any? %>
+<% if @article.errors.any? %>
+  <ul class="alert alert-warning">
     <% @article.errors.full_messages.each do |msg|  %>
       <li><%= msg %></li>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+<% end %>
 
 <%= form_for @article do |f| %>
   <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :title%><br />
+    <%= f.text_field :title, class: "form-control input-md" %>
   </p>
   <p>
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description , class: "form-control input-md" %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-md btn-success" %>
   </p>
 <% end %>
 <p><%= link_to "Back to articles listing", articles_path %></p>
