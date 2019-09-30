@@ -10,7 +10,13 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= link_to article.title, article_path(article) %></td>
-        <td><%= truncate(article.description, length: 50) %></td>
+        <td>
+          <%= truncate(article.description, length: 50) %>
+          <small class="articles-meta-details">Created by: <%= article.user.username if article.user %>,
+            <%= time_ago_in_words(article.created_at) if article.user %> ago,
+            last updated: <%= time_ago_in_words(article.updated_at) if article.user %> ago
+          </small>
+        </td>
         <td><%= link_to 'Edit', edit_article_path(article), class: "btn btn-md btn-primary" %></td>
         <td><%= link_to 'Delete', article_path(article), class: "btn btn-md btn-danger" , method: :delete, data:{confirm: "Are you sure to delete?"} %></td>
       </tr>
