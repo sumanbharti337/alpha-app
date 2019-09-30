@@ -1,0 +1,27 @@
+<h1 align="center">All User List</h1>
+<div class="table-responsive">
+  <table class="table table-condensed table-striped">
+    <tr>
+      <th>Photo</th>
+      <th>User Name</th>
+      <th>Articles(count)</th>
+<!--      <th colspan="2">Action</th>-->
+    </tr>
+    <% @users.each do |user| %>
+    <%# obj.each do |article| %>
+      <tr>
+        <td><%= link_to gravatar_for(user), user_path(user) %></td>
+        <td>
+          <%= link_to user.username, user_path(user) %>
+        </td>
+        <td>
+          <small class="articles-meta-details">
+            <%= pluralize(user.articles.count, "article") if user.articles %>
+          </small>
+        </td>
+<!--        <td><%#= link_to 'Edit', edit_article_path(article), class: "btn btn-md btn-primary" %></td>-->
+<!--        <td><%#= link_to 'Delete', article_path(article), class: "btn btn-md btn-danger" , method: :delete, data:{confirm: "Are you sure to delete?"} %></td>-->
+      </tr>
+    <% end %>
+  </table>
+</div>

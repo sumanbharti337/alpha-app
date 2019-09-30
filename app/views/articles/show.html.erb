@@ -2,6 +2,34 @@
 <div class="well col-xs-8 col-xs-offset-2">
   <h4 class="center"><strong>Description:</strong></h4>
   <hr>
+
+  <% if @article.user %>
+    <div class="table-responsive">
+      <table class="table table-condensed table-striped">
+        <tr>
+          <th colspan="3">Created By:-</th>
+        </tr>
+        <tr>
+          <th>Photo</th>
+          <th>User Name</th>
+          <th>Articles(count)</th>
+          <!--      <th colspan="2">Action</th>-->
+        </tr>
+        <tr>
+          <td><%= link_to gravatar_for(@article.user), user_path(@article.user) %></td>
+          <td>
+            <%= link_to @article.user.username, user_path(@article.user) %>
+          </td>
+          <td>
+            <small class="articles-meta-details">
+              <%= pluralize(@article.user.articles.count, "article") if @article.user.articles %>
+            </small>
+          </td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+
   <%= simple_format(@article.description) %>
   <div class="article-actions">
     <%= link_to "Edit article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
