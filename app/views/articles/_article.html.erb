@@ -16,7 +16,7 @@
             last updated: <%= time_ago_in_words(article.updated_at) if article.user %> ago
           </small>
         </td>
-        <% if logged_in? && current_user == article.user %>
+        <% if logged_in? && (current_user == article.user || current_user.admin?) %>
           <td><%= link_to 'Edit', edit_article_path(article), class: "btn btn-md btn-primary" %></td>
           <td><%= link_to 'Delete', article_path(article), class: "btn btn-md btn-danger" , method: :delete, data:{confirm: "Are you sure to delete?"} %></td>
         <% else %>

@@ -8,7 +8,9 @@
       <th>Photo</th>
       <th>User Name</th>
       <th>Articles(count)</th>
-<!--      <th colspan="2">Action</th>-->
+      <% if logged_in? and current_user.admin? %>
+        <th>Action</th>
+      <% end %>
     </tr>
     <% @users.each do |user| %>
     <%# obj.each do |article| %>
@@ -22,6 +24,12 @@
             <%= pluralize(user.articles.count, "article") if user.articles %>
           </small>
         </td>
+        <% if logged_in? and current_user.admin? %>
+          <td>
+            <%= link_to "Delete this user", user_path(user), method: :delete, data: { confirm: "Are you sure you want to delete the user and all their articles?" } %>
+          </td>
+        <% end %>
+
 <!--        <td><%#= link_to 'Edit', edit_article_path(article), class: "btn btn-md btn-primary" %></td>-->
 <!--        <td><%#= link_to 'Delete', article_path(article), class: "btn btn-md btn-danger" , method: :delete, data:{confirm: "Are you sure to delete?"} %></td>-->
       </tr>
