@@ -3,6 +3,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>categories</th>
       <th colspan="2">Action</th>
     </tr>
     <%# @articles.each do |article| %>
@@ -15,6 +16,11 @@
             <%= time_ago_in_words(article.created_at) if article.user %> ago,
             last updated: <%= time_ago_in_words(article.updated_at) if article.user %> ago
           </small>
+        </td>
+        <td>
+          <% if article.categories.any? %>
+            <p>Categories: <%= render article.categories %></p>
+          <% end %>
         </td>
         <% if logged_in? && (current_user == article.user || current_user.admin?) %>
           <td><%= link_to 'Edit', edit_article_path(article), class: "btn btn-md btn-primary" %></td>
