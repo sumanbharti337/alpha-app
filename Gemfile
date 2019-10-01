@@ -10,6 +10,7 @@ gem 'bcrypt', '~> 3.1.7'
 #pagination
 gem 'will_paginate', '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'rails-controller-testing'
 # Use mysql as the database for Active Record
 # gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
